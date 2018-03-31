@@ -1,15 +1,41 @@
-﻿using System;
-using TechTalk.SpecFlow;
-
-namespace Tests.Tests.Calculator
+﻿namespace Tests.Tests.Calculator
 {
+    using RestSharp;
+    using System.Collections.Generic;
+    using System.Net;
+    using TechTalk.SpecFlow;
+    using Model.Entities;
+    using global::Tests.Helpers;
+
     [Binding]
     public class CalculateTotalAmountSteps : TestBase
     {
-        [Given(@"I create a new property \((.*),(.*),(.*),(.*),(.*)\)")]
-        public void GivenICreateANewProperty(string p0, string p1, string p2, string p3, string p4)
+        private IRestResponse _restResponse;        
+        private HttpStatusCode _statusCode;
+        private CalculationProperty _property;
+        private List<CalculationProperty> _properties;
+
+
+        [Given(@"I create a new property \((.*),(.*),(.*)\)")]
+        public void GivenICreateANewProperty(int principal, int percentageRate, int years)
         {
-            ScenarioContext.Current.Pending();
+            _property = new CalculationProperty()
+            {
+                Principal = principal,
+                PercentageRate = percentageRate,
+                Years = years
+            };
+
+            var request = new HttpRequestWrapper()
+                            .SetMethod(Method.POST)
+                            .SetResourse("/api/calculations/calculateTotalAmount")
+                            .AddJsonContent(_property);
+
+            _restResponse = new RestResponse();
+            _restResponse = request.Execute();
+            _statusCode = _restResponse.StatusCode;
+
+            ScenarioContext.Current.Add("Pro", _property);
         }
 
         public void GivenIHaveEnteredIntoTheCalculator(int p0)
@@ -24,7 +50,7 @@ namespace Tests.Tests.Calculator
         }
         
         [Then(@"the result should be (.*) on the screen")]
-        public void ThenTheResultShouldBeOnTheScreen(int p0)
+        public void ThenTheResultShouldBeOnTheScreen(double p0)
         {
             ScenarioContext.Current.Pending();
         }
