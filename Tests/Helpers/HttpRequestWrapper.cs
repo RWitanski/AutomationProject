@@ -4,6 +4,7 @@
     using RestSharp;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using TestFramework;
 
     public class HttpRequestWrapper
     {
@@ -71,7 +72,7 @@
         {
             try
             {
-                _restClient = new RestClient("http://localhost:50983/");
+                _restClient = new RestClient(Configuration.Instance.ServiceUrl);
                 var response = _restClient.Execute(_restRequest);
                 return response;
             }
@@ -83,7 +84,7 @@
 
         public T Execute<T>()
         {
-            _restClient = new RestClient("http://localhost:50983/");
+            _restClient = new RestClient(Configuration.Instance.ServiceUrl);
             var response = _restClient.Execute(_restRequest);
             var data = JsonConvert.DeserializeObject<T>(response.Content);
             return data;
