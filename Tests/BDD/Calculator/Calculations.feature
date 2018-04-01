@@ -5,12 +5,12 @@ Scenario Outline: Check calculations
 
 Given I create a new property <Principal>, <PercentageRate>, <Years>
 Then the calculation should return <Result>
-And the system should return <StatusCode>
+And the system should return OK
 
 Examples: 
-| Principal | PercentageRate | Years | Result             | StatusCode |
-| 2         | 1              | 3     | 2.0606020000000003 | OK         |
-| 1000      | 2              | 5     | 1104.0808032       | OK         |
+| Principal | PercentageRate | Years | Result             |
+| 2         | 1              | 3     | 2.0606020000000003 |
+| 1000      | 2              | 5     | 1104.0808032       |
 
 @400
 Scenario: When added ridicoulous number to calculation a BadRequest is responded

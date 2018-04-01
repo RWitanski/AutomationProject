@@ -67,9 +67,9 @@ namespace Tests.BDD.Calculator
         [NUnit.Framework.DescriptionAttribute("Check calculations")]
         [NUnit.Framework.CategoryAttribute("Calculations")]
         [NUnit.Framework.CategoryAttribute("200")]
-        [NUnit.Framework.TestCaseAttribute("2", "1", "3", "2.0606020000000003", "OK", null)]
-        [NUnit.Framework.TestCaseAttribute("1000", "2", "5", "1104.0808032", "OK", null)]
-        public virtual void CheckCalculations(string principal, string percentageRate, string years, string result, string statusCode, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("2", "1", "3", "2.0606020000000003", null)]
+        [NUnit.Framework.TestCaseAttribute("1000", "2", "5", "1104.0808032", null)]
+        public virtual void CheckCalculations(string principal, string percentageRate, string years, string result, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Calculations",
@@ -86,7 +86,7 @@ testRunner.Given(string.Format("I create a new property {0}, {1}, {2}", principa
 #line 7
 testRunner.Then(string.Format("the calculation should return {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 8
-testRunner.And(string.Format("the system should return {0}", statusCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("the system should return OK", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
