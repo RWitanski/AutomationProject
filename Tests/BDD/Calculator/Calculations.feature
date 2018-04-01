@@ -13,7 +13,7 @@ Examples:
 | 1000      | 2              | 5     | 1104.0808032       | OK         |
 
 @400
-Scenario: Check if when added ridicoulous number a BadRequest is responded
+Scenario: When added ridicoulous number to calculation a BadRequest is responded
 Given I create a new property 1000, 2, 40000
 Then the system should return BadRequest
 

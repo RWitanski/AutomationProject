@@ -92,11 +92,11 @@ testRunner.And(string.Format("the system should return {0}", statusCode), ((stri
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check if when added ridicoulous number a BadRequest is responded")]
+        [NUnit.Framework.DescriptionAttribute("When added ridicoulous number to calculation a BadRequest is responded")]
         [NUnit.Framework.CategoryAttribute("400")]
-        public virtual void CheckIfWhenAddedRidicoulousNumberABadRequestIsResponded()
+        public virtual void WhenAddedRidicoulousNumberToCalculationABadRequestIsResponded()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check if when added ridicoulous number a BadRequest is responded", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When added ridicoulous number to calculation a BadRequest is responded", new string[] {
                         "400"});
 #line 16
 this.ScenarioSetup(scenarioInfo);
