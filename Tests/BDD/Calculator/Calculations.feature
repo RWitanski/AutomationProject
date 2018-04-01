@@ -14,6 +14,8 @@ Examples:
 
 @400
 Scenario: Check if when added ridicoulous number a BadRequest is responded
+Given I create a new property 1000, 2, 40000
+Then the system should return BadRequest
 
 
 @500

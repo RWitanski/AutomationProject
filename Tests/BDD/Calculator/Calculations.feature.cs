@@ -100,6 +100,10 @@ testRunner.And(string.Format("the system should return {0}", statusCode), ((stri
                         "400"});
 #line 16
 this.ScenarioSetup(scenarioInfo);
+#line 17
+testRunner.Given("I create a new property 1000, 2, 40000", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 18
+testRunner.Then("the system should return BadRequest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -111,11 +115,11 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check calculation with empty property", new string[] {
                         "500"});
-#line 20
-this.ScenarioSetup(scenarioInfo);
 #line 22
+this.ScenarioSetup(scenarioInfo);
+#line 24
 testRunner.Given("I create empty property", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 23
+#line 25
 testRunner.Then("the system should return InternalServerError", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -128,11 +132,11 @@ testRunner.Then("the system should return InternalServerError", ((string)(null))
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check calculation with unauthorized ApiKey", new string[] {
                         "401"});
-#line 26
-this.ScenarioSetup(scenarioInfo);
 #line 28
+this.ScenarioSetup(scenarioInfo);
+#line 30
 testRunner.Given("I create calculation request with unathorized ApiKey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 29
+#line 31
 testRunner.Then("the system should return Unauthorized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
