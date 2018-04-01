@@ -65,6 +65,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDD\Calculator\Calculations.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Calculations.feature</DependentUpon>
+    </Compile>
+    <Compile Include="BDD\Calculator\CalculationsSteps.cs" />
     <Compile Include="Helpers\HttpRequestWrapper.cs" />
     <Compile Include="Helpers\ScenarioContextWrapper.cs" />
     <Compile Include="Model\Entities\CalculationProperty.cs" />
@@ -77,33 +83,27 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Test.runsettings</DependentUpon>
     </Compile>
-    <Compile Include="Tests\Calculator\CalculateTotalAmount.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CalculateTotalAmount.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Tests\Calculator\CalculateTotalAmountSteps.cs" />
-    <Compile Include="Tests\Health\CheckHealth.feature.cs">
+    <Compile Include="BDD\Health\CheckHealth.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CheckHealth.feature</DependentUpon>
     </Compile>
-    <Compile Include="Tests\Health\CheckHealthSteps.cs" />
+    <Compile Include="BDD\Health\CheckHealthSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="BDD\Calculator\Calculations.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Calculations.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Test.runsettings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Test.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Tests\Calculator\CalculateTotalAmount.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>CalculateTotalAmount.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Tests\Health\CheckHealth.feature">
+    <None Include="BDD\Health\CheckHealth.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CheckHealth.feature.cs</LastGenOutput>
     </None>
