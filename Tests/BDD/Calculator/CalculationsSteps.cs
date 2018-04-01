@@ -15,7 +15,6 @@ namespace Tests.BDD.Calculator
         private IRestResponse _restResponse;
         private CalculationProperty _property;
         private HttpStatusCode _statusCode;
-        private List<CalculationProperty> _properties;
 
         [Given(@"I create a new property (.*), (.*), (.*)")]
         public void GivenICreateANewProperty(int principal, int percentageRate, int years)

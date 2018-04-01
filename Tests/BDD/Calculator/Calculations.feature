@@ -12,8 +12,10 @@ Examples:
 | 2         | 1              | 3     | 2.0606020000000003 |
 | 1000      | 2              | 5     | 1104.0808032       |
 
+
 @400
 Scenario: When added ridicoulous number to calculation a BadRequest is responded
+
 Given I create a new property 1000, 2, 40000
 Then the system should return BadRequest
 
@@ -23,6 +25,7 @@ Scenario: Check calculation with empty property
 
 Given I create empty property
 Then the system should return InternalServerError
+
 
 @401
 Scenario: Check calculation with unauthorized ApiKey

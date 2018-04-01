@@ -98,11 +98,11 @@ testRunner.And("the system should return OK", ((string)(null)), ((TechTalk.SpecF
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When added ridicoulous number to calculation a BadRequest is responded", new string[] {
                         "400"});
-#line 16
-this.ScenarioSetup(scenarioInfo);
 #line 17
+this.ScenarioSetup(scenarioInfo);
+#line 19
 testRunner.Given("I create a new property 1000, 2, 40000", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 18
+#line 20
 testRunner.Then("the system should return BadRequest", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -115,11 +115,11 @@ testRunner.Then("the system should return BadRequest", ((string)(null)), ((TechT
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check calculation with empty property", new string[] {
                         "500"});
-#line 22
-this.ScenarioSetup(scenarioInfo);
 #line 24
+this.ScenarioSetup(scenarioInfo);
+#line 26
 testRunner.Given("I create empty property", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 25
+#line 27
 testRunner.Then("the system should return InternalServerError", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -132,11 +132,11 @@ testRunner.Then("the system should return InternalServerError", ((string)(null))
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check calculation with unauthorized ApiKey", new string[] {
                         "401"});
-#line 28
-this.ScenarioSetup(scenarioInfo);
-#line 30
-testRunner.Given("I create calculation request with unathorized ApiKey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 31
+this.ScenarioSetup(scenarioInfo);
+#line 33
+testRunner.Given("I create calculation request with unathorized ApiKey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 34
 testRunner.Then("the system should return Unauthorized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
