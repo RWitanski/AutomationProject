@@ -10,9 +10,7 @@
     public class CheckHealthSteps
     {
         private IRestResponse _restResponse;
-       // private Property _property;
         private HttpStatusCode _statusCode;
-        //private List<Property> _properties;
 
         [Given(@"I request to check the application status")]
         public void GivenICreateANewProperty()
@@ -24,12 +22,16 @@
             _restResponse = new RestResponse();
             _restResponse = request.Execute();
             _statusCode = _restResponse.StatusCode;
+
+            ScenarioContext.Current.Add("StatusCode", _statusCode);
         }
 
         [Then(@"the system should return (.*)")]
         public void ThenTheSystemShouldReturn(HttpStatusCode statusCode)
         {
-            Assert.AreEqual(_restResponse.StatusCode, statusCode);
+            _statusCode = ScenarioContext.Current.Get<HttpStatusCode>("StatusCode");
+
+            Assert.AreEqual(_statusCode, statusCode);
         }
     }
 }

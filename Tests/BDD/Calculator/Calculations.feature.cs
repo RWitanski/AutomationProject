@@ -65,14 +65,75 @@ namespace Tests.BDD.Calculator
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Check calculations")]
-        [NUnit.Framework.TestCaseAttribute("2", "1", "3", null)]
-        public virtual void CheckCalculations(string principal, string percentageRate, string years, string[] exampleTags)
+        [NUnit.Framework.CategoryAttribute("Calculations")]
+        [NUnit.Framework.CategoryAttribute("200")]
+        [NUnit.Framework.TestCaseAttribute("2", "1", "3", "2.0606020000000003", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("1000", "2", "5", "1104.0808032", "OK", null)]
+        public virtual void CheckCalculations(string principal, string percentageRate, string years, string result, string statusCode, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check calculations", exampleTags);
+            string[] @__tags = new string[] {
+                    "Calculations",
+                    "200"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check calculations", @__tags);
 #line 4
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 testRunner.Given(string.Format("I create a new property {0}, {1}, {2}", principal, percentageRate, years), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 7
+testRunner.Then(string.Format("the calculation should return {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 8
+testRunner.And(string.Format("the system should return {0}", statusCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Check if when added ridicoulous number a BadRequest is responded")]
+        [NUnit.Framework.CategoryAttribute("400")]
+        public virtual void CheckIfWhenAddedRidicoulousNumberABadRequestIsResponded()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check if when added ridicoulous number a BadRequest is responded", new string[] {
+                        "400"});
+#line 16
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Check calculation with empty property")]
+        [NUnit.Framework.CategoryAttribute("500")]
+        public virtual void CheckCalculationWithEmptyProperty()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check calculation with empty property", new string[] {
+                        "500"});
+#line 20
+this.ScenarioSetup(scenarioInfo);
+#line 22
+testRunner.Given("I create empty property", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 23
+testRunner.Then("the system should return InternalServerError", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Check calculation with unauthorized ApiKey")]
+        [NUnit.Framework.CategoryAttribute("401")]
+        public virtual void CheckCalculationWithUnauthorizedApiKey()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check calculation with unauthorized ApiKey", new string[] {
+                        "401"});
+#line 26
+this.ScenarioSetup(scenarioInfo);
+#line 28
+testRunner.Given("I create calculation request with unathorized ApiKey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 29
+testRunner.Then("the system should return Unauthorized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

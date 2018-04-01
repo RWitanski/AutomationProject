@@ -1,4 +1,6 @@
-﻿using RestSharp;
+﻿using NUnit.Framework;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using TechTalk.SpecFlow;
@@ -16,9 +18,20 @@ namespace Tests.BDD.Calculator
         private List<CalculationProperty> _properties;
 
         [Given(@"I create a new property (.*), (.*), (.*)")]
-        public void GivenICreateANewProperty(string p0, string p1, string p2)
+        public void GivenICreateANewProperty(int principal, int percentageRate, int years)
         {
+            var _header = new Dictionary<string, string>();
+            _header.Add("ApiKey", "100");
+
+            _property = new CalculationProperty()
+            {
+                Principal = principal,
+                PercentageRate = percentageRate,
+                Years = years
+            };
+
             var _request = new HttpRequestWrapper()
+                        .AddHeaders(_header)
                         .SetMethod(Method.POST)
                         .SetResourse("/api/calculations/calculateTotalAmount")
                         .AddJsonContent(_property);
@@ -27,6 +40,66 @@ namespace Tests.BDD.Calculator
             _restResponse = _request.Execute();
             _statusCode = _restResponse.StatusCode;
 
+            ScenarioContext.Current.Add("StatusCode", _statusCode);
+            ScenarioContext.Current.Add("Content", _restResponse.Content);
+            ScenarioContext.Current.Add("Prop", _property);
+        }
+
+        [Then(@"the calculation should return (.*)")]
+       public void ThenTheCalculationShouldReturn(string expectedResult)
+        {
+            var _calcResult = ScenarioContext.Current.Get<string>("Content");
+
+            Assert.AreEqual(_calcResult, expectedResult);
+        }
+
+
+        [Given(@"I create calculation request with unathorized ApiKey")]
+        public void GivenICreateCalculationPropertyWithUnathorizedApiKey()
+        {
+            var _header = new Dictionary<string, string>();
+            _header.Add("ApiKey", "99");
+
+            _property = new CalculationProperty()
+            {
+                Principal = 1000,
+                PercentageRate = 2,
+                Years = 5
+            };
+
+            var _request = new HttpRequestWrapper()
+                        .AddHeaders(_header)
+                        .SetMethod(Method.POST)
+                        .SetResourse("/api/calculations/calculateTotalAmount")
+                        .AddJsonContent(_property);
+
+            _restResponse = new RestResponse();
+            _restResponse = _request.Execute();
+            _statusCode = _restResponse.StatusCode;
+
+            ScenarioContext.Current.Add("StatusCode", _statusCode);
+        }
+
+
+        [Given(@"I create empty property")]
+        public void GivenICreateEmptyProperty()
+        {
+            var _header = new Dictionary<string, string>();
+            _header.Add("ApiKey", "100");
+
+            _property = null;
+
+            var _request = new HttpRequestWrapper()
+                        .AddHeaders(_header)
+                        .SetMethod(Method.POST)
+                        .SetResourse("/api/calculations/calculateTotalAmount")
+                        .AddJsonContent(_property);
+
+            _restResponse = new RestResponse();
+            _restResponse = _request.Execute();
+            _statusCode = _restResponse.StatusCode;
+
+            ScenarioContext.Current.Add("StatusCode", _statusCode);
         }
     }
 }

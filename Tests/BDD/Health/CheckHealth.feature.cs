@@ -66,22 +66,16 @@ namespace Tests.BDD.Health
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Check application health")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        [NUnit.Framework.TestCaseAttribute("OK", null)]
-        public virtual void CheckApplicationHealth(string statusCode, string[] exampleTags)
+        public virtual void CheckApplicationHealth()
         {
-            string[] @__tags = new string[] {
-                    "mytag"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check application health", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check application health", new string[] {
+                        "mytag"});
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.Given("I request to check the application status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.Then(string.Format("the system should return {0}", statusCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the system should return OK", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
