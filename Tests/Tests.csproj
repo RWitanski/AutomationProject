@@ -75,7 +75,6 @@
     <Compile Include="Helpers\ScenarioContextWrapper.cs" />
     <Compile Include="Model\Entities\CalculationProperty.cs" />
     <Compile Include="SpecFlowNUnitExtension.cs" />
-    <Compile Include="TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.Designer.cs">
       <AutoGen>True</AutoGen>
